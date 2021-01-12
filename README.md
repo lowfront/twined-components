@@ -7,7 +7,9 @@
 Extended component of a `styled-components` that prioritizes class names for use in `tailwindcss`, and so on...
 Using the template literal grammar, you can write the class name and CSS code to the component. Like `styled-components`!
 Available in `styled-components` v5 and above.
- 
+With [vscode-twined-components](https://marketplace.visualstudio.com/items?itemName=lowfront.vscode-twined-components), syntax highlight is supported when entering css code.
+
+
 ```js
 // with Tailwindcss
 const Button = twined.button`
@@ -87,5 +89,5 @@ const Button = twined(BorderlessButton)`
 ```
 
 ## Roadmap
-- [ ] Add syntax highlighting
+- [x] Add syntax highlighting
 - [ ] Add Type inference
