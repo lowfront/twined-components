@@ -1,9 +1,10 @@
+# Twined Components
 <div align="center">
   <img alt="twined-components" src="https://raw.githubusercontent.com/lowfront/vscode-twined-components/master/logo.png" height="150px" />
-  </a>
+  <div><a href="https://codesandbox.io/s/friendly-chaplygin-zyqhl?file=/src/App.js">Demo on CodeSandbox</a></div>
 </div>
 
-# Twined Components
+
 Extended component of a `styled-components` that prioritizes class names for use in `tailwindcss`, and so on...
 Using the template literal grammar, you can write the class name and CSS code to the component. Like `styled-components`!
 Available in `styled-components` v5 and above.
