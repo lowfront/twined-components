@@ -89,6 +89,15 @@ const Button = twined(BorderlessButton)`
 </ModalBackground>
 ```
 
+## For other versions 
+It also works in `styled-components` v4.1.0 version and later, but has several limitations.
+
+### v4.2.0 and later
+Classname inheritance inoperative. 
+
+### v4.1.0 and later
+When delivering styled-components to props in css method, could not get corresponding class name from scss code.
+
 ## Roadmap
 - [x] Add syntax highlighting
 - [ ] Add Type inference
