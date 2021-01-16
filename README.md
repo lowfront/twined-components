@@ -93,7 +93,7 @@ const Button = twined(BorderlessButton)`
 It also works in `styled-components` v4.1.0 version and later, but has several limitations.
 
 ### v4.2.0 and later
-Classname inheritance inoperative. 
+Classname inheritance inoperative. [Example](https://codesandbox.io/s/twined-components-demo-for-v420-or-later-cnn9m)
 
 ### v4.1.0 and later
 When delivering styled-components to props in css method, could not get corresponding class name from scss code.
