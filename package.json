@@ -1,6 +1,6 @@
 {
   "name": "twined-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Extended component of a `styled-components` that prioritizes class names for use in `tailwindcss`, and so on...",
   "main": "dist/index.js",
   "scripts": {

@@ -3,10 +3,18 @@ import {ComponentType} from 'react';
 import domElements from './dom-elements';
 import _styled from 'styled-components';
 
-export type litComponentFunction = (scArray: TemplateStringsArray, ...scStrs: any[]) => ComponentType<any>;
+type TemplateLiteralArrayClone = Array<any> & {raw: Array<any>;};
+export type CSSStylePartial = Partial<Record<keyof CSSStyleDeclaration, unknown>>;
+export type litComponentFunction = ((scArray: TemplateStringsArray, ...scStrs: any[]) => ComponentType<any> | ((params: React.CSSProperties) => ComponentType<any>));
 export type StyledStyle = {
   css: litComponentFunction;
 };
+
+const isTemplateLiterals = (vararg: any) => 
+  Array.isArray(vararg[0]) &&
+  Array.isArray((<TemplateLiteralArrayClone>vararg[0]).raw) &&
+  vararg[0].length === (<TemplateLiteralArrayClone>vararg[0]).raw.length &&
+  vararg[0].every((item, i) => item === vararg[0].raw[i]);
 
 const falsyToEmptyString = (val: any) => (val === undefined || val === false || Number.isNaN(val) || val === null) ? '' : val;
 
@@ -25,12 +33,16 @@ const litComponentFactory = <T extends (keyof JSX.IntrinsicElements)>(el: T|Comp
   });
   
   return Object.assign((styledComponent`` as unknown) as ComponentType, {
-    css(scArray: TemplateStringsArray, ...scStrs: any[]) {
-      return styledComponent(scArray, ...scStrs);
+    css(...params: any[]) {
+      if (isTemplateLiterals(params)) {
+        const [scArray, ...scStrs]: [TemplateStringsArray, any[]] = <[TemplateStringsArray, any[]]>params;
+        return styledComponent(scArray, ...scStrs);
+      } else {
+        return styledComponent(params[0]);
+      }
     },
   });
 };
-
 
 export type JSXElements = {
   [key in keyof JSX.IntrinsicElements]: (array: TemplateStringsArray, ...strs: any[]) => ComponentType<any> & StyledStyle;

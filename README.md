@@ -1,15 +1,13 @@
 # Twined Components
 <div align="center">
   <img alt="twined-components" src="https://raw.githubusercontent.com/lowfront/vscode-twined-components/master/logo.png" height="150px" />
-  <div><a href="https://codesandbox.io/s/friendly-chaplygin-zyqhl?file=/src/App.js">Demo on CodeSandbox</a></div>
+  <div><a href="https://codesandbox.io/s/friendly-chaplygin-zyqhl?file=/src/App.js">Demo on CodeSandbox</a></div><br/><br/>
 </div>
-
 
 Extended component of a `styled-components` that prioritizes class names for use in `tailwindcss`, and so on...
 Using the template literal grammar, you can write the class name and CSS code to the component. Like `styled-components`!
 Available in `styled-components` v5 and above.
-With [vscode-twined-components](https://marketplace.visualstudio.com/items?itemName=lowfront.vscode-twined-components), syntax highlight is supported when entering css code.
-
+With [vscode-twined-components](https://marketplace.visualstudio.com/items?itemName=lowfront.vscode-twined-components), syntax highlight and intellisense is supported when entering classname and css code.
 
 ```js
 // with Tailwindcss
@@ -26,7 +24,6 @@ const IconReact = twined.i`
 ```
 
 `Twined-components` is an extended component of `styled-components` that returns styled-component.
-
 
 ## Why Twined-components?
 Most of the CSS frameworks are created based on classnames. `Styled-components` can also write the classname. But, it is designed to make it easier to enter css code than to write the classname. However, we usually write the classname first and modify the details by writing down the CSS code, when using the CSS framework. `Twined-components` are designed to write class names first.
@@ -45,7 +42,6 @@ npm i styled-components twined-components
 // with Fontawesome
 import React from 'react';
 import twined from 'twined-components';
-
 
 // button base
 const BorderlessButton = twined.button`
@@ -72,13 +68,14 @@ const Modal = twined.div`
   }
 `;
 
-// Twined-components returns styled-components and can be expanded.
+// Twined-components returns styled-components and can be expanded. It also optionally supports writing CSS as a JavaScript object instead of CSS code.
 const Button = twined(BorderlessButton)`
   block ml-5
-  ${({primary}) => primary && 'bg-indigo-500 text-white'}
-`.css`
-  ${({primary}) => primary && `font-weight: bold;`}
-`;
+`.css({
+  color: ({primary}) => primary && 'white',
+  background: ({primary}) => primary && 'salmon',
+  fontWeight: ({primary}) => primary && 'bold'
+});
 
 <ModalBackground>
   <Modal>
@@ -93,11 +90,12 @@ const Button = twined(BorderlessButton)`
 It also works in `styled-components` v4.1.0 version and later, but has several limitations.
 
 ### v4.2.0 and later
-Classname inheritance inoperative. [Example](https://codesandbox.io/s/twined-components-demo-for-v420-or-later-cnn9m)
+Unable to expand classname. Instead, `styled-component` can be extended. [Example](https://codesandbox.io/s/twined-components-demo-for-v420-or-later-cnn9m)
 
 ### v4.1.0 and later
-When delivering styled-components to props in css method, could not get corresponding class name from scss code.
+When delivering `styled-components` to props in css method, could not get corresponding classname from scss code.
 
 ## Roadmap
-- [x] Add syntax highlighting
+- [x] Add Syntax highlighting
 - [ ] Add Type inference
+- [ ] Add Test code
