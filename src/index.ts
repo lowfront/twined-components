@@ -90,45 +90,6 @@ export interface ThemedBaseStyledInterfaceForTwined<T extends object>
 
 export type TwinedInterface = ThemedBaseStyledInterfaceForTwined<any>;
 
-/**
- * @deprecated This type will be deleted next version.
- */
-export type JSXElements = {
-  [key in keyof JSX.IntrinsicElements]: <T extends object>(
-    array: TemplateStringsArray,
-    ...strs: (string | ((p: T) => InterpolationValue))[]
-  ) => StyledComponent<
-    key,
-    any,
-    T & {
-      className: string;
-    },
-    "className"
-  >;
-};
-
-/**
- * @deprecated This type will be deleted next version.
- */
-export type CSSStylePartial = Partial<
-  Record<keyof CSSStyleDeclaration, unknown>
->;
-
-/**
- * @deprecated This type will be deleted next version.
- */
-export type litComponentFunction = (
-  scArray: TemplateStringsArray,
-  ...scStrs: any[]
-) => ComponentType<any> | ((params: React.CSSProperties) => ComponentType<any>);
-
-/**
- * @deprecated This type will be deleted next version.
- */
-export type StyledStyle = {
-  css: litComponentFunction;
-};
-
 type TemplateLiteralArrayClone = Array<any> & { raw: Array<any> };
 
 const isTemplateLiterals = (vararg: any) =>
