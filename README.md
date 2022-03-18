@@ -87,6 +87,23 @@ const Button = twined(BorderlessButton)`
 </ModalBackground>;
 ```
 
+## Typescript support
+
+```tsx
+import twined from "twined-components";
+
+const Button = twined.button<{primary: boolean}>`
+  ${({parimary}) => parimary : 'text-white bg-indigo-500' : ''} border-0 px-6 py-2 rounded-lg
+`.css`
+  text-align: center;
+  ${({parimary}) => parimary : 'font-weight: bold;' : ''}
+`;
+
+<Button primary>Click</Button>
+```
+
+Type support is similar to `styled-components`. The props specified with the type is delivered equally to the class and css regions.
+
 ## For other versions
 
 It also works in `styled-components` v4.1.0 version and later, but has several limitations.
