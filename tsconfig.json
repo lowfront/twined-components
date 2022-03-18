@@ -4,7 +4,16 @@
     "module": "CommonJs",
     "esModuleInterop": true,
     "target": "es2018",
-    "lib": ["ES5", "ES6", "ES2015", "ES2016", "ES2017", "ES2018", "ESNext", "DOM"],
+    "lib": [
+      "ES5",
+      "ES6",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ESNext",
+      "DOM"
+    ],
     "moduleResolution": "node",
     "sourceMap": false,
     "outDir": "./dist",
@@ -15,7 +24,6 @@
     "declaration": true,
     "baseUrl": ".",
     "jsx": "react",
-    "removeComments": true,
     "typeRoots": ["node_modules/@types", "node_modules/@hashsnap"]
   },
   "include": ["./src/**/*"]

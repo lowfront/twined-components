@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "moduleResolution": "Node",
+    "declaration": true
+  }
+}
