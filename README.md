@@ -1,4 +1,5 @@
 # Twined Components
+
 <div align="center">
   <img alt="twined-components" src="https://raw.githubusercontent.com/lowfront/vscode-twined-components/master/logo.png" height="150px" />
   <div><a href="https://codesandbox.io/s/friendly-chaplygin-zyqhl?file=/src/App.js">Demo on CodeSandbox</a></div><br/><br/>
@@ -26,10 +27,12 @@ const IconReact = twined.i`
 `Twined-components` is an extended component of `styled-components` that returns styled-component.
 
 ## Why Twined-components?
+
 Most of the CSS frameworks are created based on classnames. `Styled-components` can also write the classname. But, it is designed to make it easier to enter css code than to write the classname. However, we usually write the classname first and modify the details by writing down the CSS code, when using the CSS framework. `Twined-components` are designed to write class names first.
 
 ## Install
-`Twined-components` is a component that simply extends `styled-components`. Therefore, dependence on `styled-components` is needed. 
+
+`Twined-components` is a component that simply extends `styled-components`. Therefore, dependence on `styled-components` is needed.
 
 ```bash
 npm i styled-components twined-components
@@ -40,15 +43,15 @@ npm i styled-components twined-components
 ```jsx
 // with Tailwindcss
 // with Fontawesome
-import React from 'react';
-import twined from 'twined-components';
+import React from "react";
+import twined from "twined-components";
 
 // button base
 const BorderlessButton = twined.button`
   border-0 px-6 py-2 rounded-lg
 `;
 
-// close button 
+// close button
 const Close = twined(BorderlessButton)`
   hidden absolute right-0 top-0 transform translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-black text-white rounded-full
   items-center justify-center
@@ -71,11 +74,9 @@ const Modal = twined.div`
 // Twined-components returns styled-components and can be expanded. It also optionally supports writing CSS as a JavaScript object instead of CSS code.
 const Button = twined(BorderlessButton)`
   block ml-5
-`.css({
-  color: ({primary}) => primary && 'white',
-  background: ({primary}) => primary && 'salmon',
-  fontWeight: ({primary}) => primary && 'bold'
-});
+`.css(({ primary }) => ({
+  ...(primary && { color: "white", background: "salmon", fontWeight: "bold" }),
+}));
 
 <ModalBackground>
   <Modal>
@@ -83,19 +84,23 @@ const Button = twined(BorderlessButton)`
     <Button primary>Ok</Button>
     <Close />
   </Modal>
-</ModalBackground>
+</ModalBackground>;
 ```
 
-## For other versions 
+## For other versions
+
 It also works in `styled-components` v4.1.0 version and later, but has several limitations.
 
 ### v4.2.0 and later
+
 Unable to expand classname. Instead, `styled-component` can be extended. [Example](https://codesandbox.io/s/twined-components-demo-for-v420-or-later-cnn9m)
 
 ### v4.1.0 and later
+
 When delivering `styled-components` to props in css method, could not get corresponding classname from scss code.
 
 ## Roadmap
+
 - [x] Add Syntax highlighting
-- [ ] Add Type inference
-- [ ] Add Test code
+- [x] Add Type inference
+- [x] Add Test code
