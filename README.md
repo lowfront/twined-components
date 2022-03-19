@@ -5,7 +5,7 @@
   <div><a href="https://codesandbox.io/s/friendly-chaplygin-zyqhl?file=/src/App.js">Demo on CodeSandbox</a></div><br/><br/>
 </div>
 
-Extended component of a `styled-components` that prioritizes class names for use in `tailwindcss`, and so on...
+Extended component of a `styled-components` that prioritizes class names for use in `tailwindcss`.
 Using the template literal grammar, you can write the class name and CSS code to the component. Like `styled-components`!
 Available in `styled-components` v5 and above.
 With [vscode-twined-components](https://marketplace.visualstudio.com/items?itemName=lowfront.vscode-twined-components), syntax highlight and intellisense is supported when entering classname and css code.
