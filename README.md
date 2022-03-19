@@ -26,7 +26,7 @@ const IconReact = twined.i`
 
 `Twined-components` is an extended component of `styled-components` that returns styled-component.
 
-## Why Twined-components?
+## Why Twined-components
 
 Most of the CSS frameworks are created based on classnames. `Styled-components` can also write the classname. But, it is designed to make it easier to enter css code than to write the classname. However, we usually write the classname first and modify the details by writing down the CSS code, when using the CSS framework. `Twined-components` are designed to write class names first.
 
