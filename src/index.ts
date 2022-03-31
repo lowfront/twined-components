@@ -50,6 +50,17 @@ export interface ThemedStyledFunctionBaseForTwined<
   O extends object = {},
   A extends keyof any = never
 > {
+  (
+    first:
+      | TemplateStringsArray
+      | CSSObject
+      | InterpolationFunction<
+          ThemedStyledProps<StyledComponentPropsWithRef<C> & O, T>
+        >,
+    ...rest: Array<
+      Interpolation<ThemedStyledProps<StyledComponentPropsWithRef<C> & O, T>>
+    >
+  ): WithCssMethod<C, T, O, A>;
   <U extends object>(
     first:
       | TemplateStringsArray
@@ -90,13 +101,10 @@ export interface ThemedBaseStyledInterfaceForTwined<T extends object>
 
 export type TwinedInterface = ThemedBaseStyledInterfaceForTwined<any>;
 
-type TemplateLiteralArrayClone = Array<any> & { raw: Array<any> };
-
-const isTemplateLiterals = (vararg: any) =>
-  Array.isArray(vararg[0]) &&
-  Array.isArray((<TemplateLiteralArrayClone>vararg[0]).raw) &&
-  vararg[0].length === (<TemplateLiteralArrayClone>vararg[0]).raw.length &&
-  vararg[0].every((item, i) => item === vararg[0].raw[i]);
+const isTemplateLiterals = (vararg: any) => {
+  const firstArg = vararg[0];
+  return Array.isArray(firstArg) && Array.isArray((firstArg as any).raw);
+};
 
 const falsyToEmptyString = (val: any) =>
   val === undefined || val === false || Number.isNaN(val) || val === null
